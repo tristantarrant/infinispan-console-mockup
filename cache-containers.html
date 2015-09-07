@@ -7,28 +7,26 @@
 <head>
     <title>Infinispan Management Console</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./bower_components/patternfly/dist/img/favicon.ico">
+    <link rel="shortcut icon" href="bower_components/patternfly/dist/img/favicon.ico">
     <!-- iPad retina icon -->
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="./bower_components/patternfly/dist/img/apple-touch-icon-precomposed-152.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="bower_components/patternfly/dist/img/apple-touch-icon-precomposed-152.png">
     <!-- iPad retina icon (iOS < 7) -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./bower_components/patternfly/dist/img/apple-touch-icon-precomposed-144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="bower_components/patternfly/dist/img/apple-touch-icon-precomposed-144.png">
     <!-- iPad non-retina icon -->
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="./bower_components/patternfly/dist/img/apple-touch-icon-precomposed-76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="bower_components/patternfly/dist/img/apple-touch-icon-precomposed-76.png">
     <!-- iPad non-retina icon (iOS < 7) -->
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./bower_components/patternfly/dist/img/apple-touch-icon-precomposed-72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bower_components/patternfly/dist/img/apple-touch-icon-precomposed-72.png">
     <!-- iPhone 6 Plus icon -->
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="./bower_components/patternfly/dist/img/apple-touch-icon-precomposed-180.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="bower_components/patternfly/dist/img/apple-touch-icon-precomposed-180.png">
     <!-- iPhone retina icon (iOS < 7) -->
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./bower_components/patternfly/dist/img/apple-touch-icon-precomposed-114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bower_components/patternfly/dist/img/apple-touch-icon-precomposed-114.png">
     <!-- iPhone non-retina icon (iOS < 7) -->
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="./bower_components/patternfly/dist/img/apple-touch-icon-precomposed-57.png">
-    <link href="./bower_components/patternfly/dist/css/patternfly.min.css" rel="stylesheet" media="screen, print">
-    <link href="./bower_components/patternfly/dist/css/patternfly-additions.min.css" rel="stylesheet" media="screen, print">
-    <script src="./bower_components/patternfly/components/jquery/dist/jquery.min.js"></script>
-    <script src="./bower_components/patternfly/components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="./bower_components/patternfly/components/c3/c3.min.js"></script>
-    <script src="./bower_components/patternfly/components/d3/d3.min.js"></script>
-    <script src="./bower_components/patternfly/dist/js/patternfly.min.js"></script>
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="bower_components/patternfly/dist/img/apple-touch-icon-precomposed-57.png">
+    <link href="bower_components/patternfly/dist/css/patternfly.min.css" rel="stylesheet" media="screen, print">
+    <link href="bower_components/patternfly/dist/css/patternfly-additions.min.css" rel="stylesheet" media="screen, print">
+    <script src="bower_components/patternfly/components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/patternfly/components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/patternfly/dist/js/patternfly.min.js"></script>
 
     <style>
         table.ispn-aligned tr td {vertical-align:middle;}
@@ -44,7 +42,7 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">
-            <img src="./bower_components/patternfly/dist/img/brand.svg" alt="PatternFly Enterprise Application" />
+            <img src="bower_components/patternfly/dist/img/brand.svg" alt="PatternFly Enterprise Application" />
         </a>
     </div>
     <div class="collapse navbar-collapse navbar-collapse-1">
@@ -173,7 +171,7 @@
                             <td><span class="label label-danger">STOPPED</span></td>
                             <td><strong><a href="cache-container-detail.html">My cache container 3</a></strong></td>
                             <td><span class="label label-default">66</span></td>
-                            <td><a href="clustering.html">JDG Cluster 1</a><br><small>TCP, UDP</small</td>
+                            <td><a href="clustering.html">JDG Cluster 1</a><br><small>TCP, UDP</small></td>
                             <td>
                                 HotRod: 5554, SSL<br>
                                 REST: 4345<br>
@@ -188,7 +186,7 @@
                 </div>
             </div>
         </div><!-- /col -->
-        <div class="col-sm-4 col-md-3 sidebar-pf sidebar-pf-right">
+        <div class="col-sm-4 col-md-3 sidebar-pf sidebar-pf-right" style="min-height: 923px;">
             <div class="sidebar-header sidebar-header-bleed-left sidebar-header-bleed-right">
                 <h2 class="h5">Latest Grid Events:</h2>
             </div>
@@ -214,117 +212,5 @@
         </div><!-- /col -->
     </div><!-- /row -->
 </div><!-- /container -->
-<script>
-      var chart = c3.generate({
-        axis: {
-          x: {
-            tick: {
-              format: '%m-%d',
-              outer: false
-            },
-            type: 'timeseries'
-          },
-          y: {
-            tick: {
-              format: function(d) { return d + "%"; },
-              outer: false
-            }
-          }
-        },
-        bindto: '#chart',
-        color: {
-          pattern: ['#006e9c','#00a8e1', '#3f9c35', '#ec7a08', '#cc0000']
-        },
-        data: {
-          columns: [
-            ['x', '2015-04-01', '2015-04-02', '2015-04-03', '2015-04-04', '2015-04-05', '2015-04-06', '2015-04-07'],
-            ['data1', 16, 44, 33, 88, 50, 76, 21]
-          ],
-          x: 'x'
-        },
-        grid: {
-          y: {
-            show: true
-          }
-        },
-        legend: {
-          hide: true
-        },
-        point: {
-          r: 4
-        },
-        size: {
-          height: 220
-        }
-      });
-      var chart2 = c3.generate({
-        bindto: '#chart2',
-        data: {
-          colors: {
-            Cloud: '#006e9c',
-            Virtual: '#00a8e1',
-            Baremetal: '#969696'
-          },
-          columns: [
-            ['Cloud', 4,828],
-            ['Virtual', 13,258],
-            ['Baremetal', 11,1124]
-          ],
-          type : 'donut',
-          onclick: function (d, i) { console.log("onclick", d, i); },
-          onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-          onmouseout: function (d, i) { console.log("onmouseout", d, i); }
-        },
-        donut: {
-          title: "29,210 Hosts"
-        },
-        legend: {
-          position: 'right'
-        },
-        size: {
-          height: 220
-        }
-      });
-      var chart4 = c3.generate({
-        axis: {
-          rotated: true,
-          x: {
-            categories: ['Location 1', 'Location 2', 'Location 3', 'Location 4'],
-            tick: {
-              outer: false
-            },
-            type: 'category'
-          },
-          y: {
-            tick: {
-              format: function(d) { return d + "%"; },
-              outer: false
-            }
-          }
-        },
-        bindto: '#chart4',
-        color: {
-          pattern: ['#006e9c','#00a8e1', '#3f9c35', '#ec7a08', '#cc0000']
-        },
-        data: {
-          columns: [
-            ['Virtual Resources', 25, 35, 18, 78],
-            ['Physical Resources', 60, 40, 48, 8]
-          ],
-          groups: [
-            ['Virtual Resources', 'Physical Resources']
-          ],
-          type: 'bar'
-        },
-        grid: {
-          y: {
-            show: true
-          }
-        },
-        size: {
-          height: 200
-        }
-      });
-    </script>
 </body>
 </html>
