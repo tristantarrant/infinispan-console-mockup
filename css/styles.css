@@ -10,3 +10,6 @@
   height: 20px;
 }
 
+.sidebar-pf fieldset label {
+  display: block;
+}
