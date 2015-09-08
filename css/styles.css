@@ -17,3 +17,35 @@
 table.ispn-aligned tr td {
   vertical-align:middle;
 }
+
+.noUi-horizontal {
+	height: 10px;
+}
+.noUi-horizontal .noUi-handle {
+	width: 18px;
+	height: 14px;
+	left: -9px;
+	top: -2px;
+}
+.noUi-handle:before,
+.noUi-handle:after {
+	content: "";
+	display: block;
+	position: absolute;
+	height: 7px;
+	width: 1px;
+	background: #E8E7E6;
+	left: 7px;
+	top: 3px;
+}
+.noUi-connect {
+	background: #0099D3;
+}
+
+.card-pf-body table td {
+    text-align: right;
+}
+
+.card-pf-body table {
+    margin-bottom: 0.5em;
+}
