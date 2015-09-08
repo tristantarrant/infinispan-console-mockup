@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="ie9"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    <title>Infinispan Server Management Console</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="patternfly/img/favicon.ico">
+    <!-- iPad retina icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="152x152"
+          href="patternfly/img/apple-touch-icon-precomposed-152.png">
+    <!-- iPad retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+          href="patternfly/img/apple-touch-icon-precomposed-144.png">
+    <!-- iPad non-retina icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="76x76"
+          href="patternfly/img/apple-touch-icon-precomposed-76.png">
+    <!-- iPad non-retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+          href="patternfly/img/apple-touch-icon-precomposed-72.png">
+    <!-- iPhone 6 Plus icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="120x120"
+          href="patternfly/img/apple-touch-icon-precomposed-180.png">
+    <!-- iPhone retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+          href="patternfly/img/apple-touch-icon-precomposed-114.png">
+    <!-- iPhone non-retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57"
+          href="patternfly/img/apple-touch-icon-precomposed-57.png">
+    <link href="patternfly/css/patternfly.min.css" rel="stylesheet" media="screen, print">
+    <link href="patternfly/css/patternfly-additions.min.css" rel="stylesheet"
+          media="screen, print">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+          media="screen, print">
+    <link href="css/styles.css" rel="stylesheet" media="screen, print">
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="patternfly/js/patternfly.js"></script>
+    <script src="js/globals.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-pf" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            <img src="img/brand.svg" alt="Infinispan Server Management Console"/>
+        </a>
+    </div>
+    <div class="collapse navbar-collapse navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-utility">
+            <li>
+                <a href="#">Status</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="pficon pficon-user"></span>
+                    Brian Johnson <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="login.html">Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-primary">
+            <li class="active">
+                <a href="cache-containers-html">Caches</a>
+            </li>
+            <li>
+                <a href="clusters.html">Clusters</a>
+            </li>
+            <li>
+                <a href="deployments.html" class="active">Deployments</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="cache-containers.html">Cache containers</a>
+                </li>
+                <li class="active"><strong>My cache container 1</strong></li>
+            </ol>
+            <div class="page-header page-header-bleed-right">
+                <div class="actions pull-right">
+                    <a href="#"><span class="pficon pficon-refresh"></span> Refresh</a>
+                </div>
+                <h1>Cache container 'My cache container 1'</h1>
+            </div>
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs">
+                    <li><a href="cache-container-caches.html">Caches</a></li>
+                    <li><a href="cache-container-performance.html">Performance</a></li>
+                    <li><a href="cache-container-configuration.html">Configuration</a></li>
+                    <li><a href="cache-container-schemas.html">Schemas</a></li>
+                    <li class="active"><a href="cache-container-executables.html">Executables</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<table class="datatable table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Language</th>
+      <th>Parameters</th>
+      <th>Execution Mode</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>Exec #1</td>
+        <td>Javascript</td>
+        <td>a1, a2</td>
+        <td>Local</td>
+    </tr>
+    <tr>
+        <td>Exec #2</td>
+        <td>Scala</td>
+        <td>a1, a2</td>
+        <td>Distributed</td>
+    </tr>
+    <tr>
+        <td>Exec #3</td>
+        <td>Java</td>
+        <td>a1, a2</td>
+        <td>Local</td>
+    </tr>
+  </tbody>
+</table>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget eros tincidunt, semper ante nec, dapibus ante.</p>
+        </div><!-- /col -->
+      </div><!-- /row -->
+    </div><!-- /container -->
+    <script>
+      // Initialize Datatables
+      $(document).ready( function() {
+        $('.datatable').dataTable();
+      });
+    </script>
+  </body>
+</html>

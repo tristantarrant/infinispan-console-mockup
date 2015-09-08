@@ -13,3 +13,7 @@
 .sidebar-pf fieldset label {
   display: block;
 }
+
+table.ispn-aligned tr td {
+  vertical-align:middle;
+}
