@@ -178,10 +178,101 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-12 col-md-12">
+        <div class="col-sm-8 col-md-9">
 
 
         </div>
+
+        <div class="col-sm-3 col-md-2 col-sm-pull-9 col-md-pull-10 sidebar-pf sidebar-pf-left">
+            <br>
+            <small>Quick search:</small>
+            <form role="form" class="search-pf has-button">
+                <div class="form-group has-clear">
+                    <div class="search-pf-input-group">
+                        <label for="search5" class="sr-only">Name</label>
+                        <input id="search5" class="form-control" placeholder="Type name, data center, ..."
+                               type="search">
+                        <button style="display: none;" type="button" class="clear" aria-hidden="true"><span
+                                class="pficon pficon-close"></span></button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default" type="submit"><span class="fa fa-search"></span></button>
+                </div>
+            </form>
+            <hr>
+            <div class="panel-group" id="filter-accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#filter-type-accordion" href="#filter-type-accordion" class="collapsed">
+                                Type
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="filter-type-accordion" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <fieldset>
+                                <label><input type="checkbox" name="cache-type" value="local" checked/> Local</label>
+                                <label><input type="checkbox" name="cache-type" value="replicated" checked/> Replicated</label>
+                                <label><input type="checkbox" name="cache-type" value="distributed" checked/>
+                                    Distributed</label>
+                                <label><input type="checkbox" name="cache-type"
+                                              value="invalidation" checked/> Invalidation</label>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#filter-trait-accordion" href="#filter-trait-accordion"
+                               class="collapsed">
+                                Trait
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="filter-trait-accordion" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <fieldset>
+                                <label><input type="checkbox" name="cache-trait" value="bounded" checked/> Bounded <span class="fa fa-stack-overflow" title="Bounded"></span></label>
+                                <label><input type="checkbox" name="cache-trait" value="compatible" checked/> Compatible <span class="fa fa-puzzle-piece" title="Compatible"></span></label>
+                                <label><input type="checkbox" name="cache-trait" value="indexed" checked/> Indexed <span class="fa fa-list-ol" title="Indexed"></span></label>
+                                <label><input type="checkbox" name="cache-trait" value="persistent" checked/> Persistent <span class="fa fa-database" title="Persistent"></span></label>
+                                <label><input type="checkbox" name="cache-trait" value="remotebackup" checked/> Remote
+                                    backup <span class="pficon pficon-history" title="Remote backup"></span></label>
+                                <label><input type="checkbox" name="cache-trait" value="secure" checked/> Secure <span class="fa fa-lock" title="Indexed"></span></label>
+                                <label><input type="checkbox" name="cache-trait"
+                                              value="transactional" checked/> Transactional <span class="fa fa-arrow-circle-o-down" title="Transactional"></span></label>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#filter-status-accordion" href="#filter-status-accordion"
+                               class="collapsed">
+                                Status
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="filter-status-accordion" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <fieldset>
+                                <label><input type="checkbox" name="cache-status" value="indexing" checked/> Indexing</label>
+                                <label><input type="checkbox" name="cache-status"
+                                              value="maintenance" checked/> Offline</label>
+                                <label><input type="checkbox" name="cache-status"
+                                              value="rebalancing" checked/> Rebalancing</label>
+                                <label><input type="checkbox" name="cache-status" value="splitbrain" checked/> Split</label>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </div>

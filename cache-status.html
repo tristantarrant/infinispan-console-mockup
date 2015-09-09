@@ -177,123 +177,339 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-12 col-md-12">
-                <p><h4><span class="fa fa-database" title="Persistent"></span> Persistant</h4></p>
-                <p><h4><span class="fa fa-arrow-circle-o-down" title="Transactional"> Transactional</span></h4></p>
-                <p><h4><span class="fa fa-stack-overflow" title="Bounded"></span> Bounded</h4>
+    <div class="cards-pf" style="padding:20px">
+        <h4>Cache traits:</h4>
+
+        <div class="row row-cards-pf">
+            <div class="col-xs-1 col-sm-1 col-md-1">
+                <div class="card-pf card-pf-aggregate-status card-pf-with-action"
+                     style="height: 40px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        <span class="fa fa-database" title="Persistent"></span> Persistant
+                    </h2>
+                </div>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1">
+                <div class="card-pf     card-pf-aggregate-status card-pf-with-action"
+                     style="height: 40px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        <span class="fa fa-arrow-circle-o-down" title="Transactional"></span> Transactional
+                    </h2>
+                </div>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1">
+                <div class="card-pf     card-pf-aggregate-status card-pf-with-action"
+                     style="height: 40px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        <span class="fa fa-stack-overflow" title="Bounded"></span> Bounded
+                    </h2>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <br>
-    <div class="row row-cards-pf">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
-                 style="height: 89px;">
-                <h2 class="card-pf-title" style="height: 17px;">
-                    Capacity usage
-                </h2>
+        <h4>Cache content:</h4>
 
-                <div class="card-pf-body" style="height: 50px;">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0"
-                             aria-valuemax="100" style="width: 50%;">
-                            <span>ENTRIES: 340 / 680 - 50%</span>
+        <div class="row row-cards-pf">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        Number of entries
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0"
+                                 aria-valuemax="100" style="width: 50%;">
+                                <span>340 / 680 - 50%</span>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        READ / WRITE ratio
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">55.6</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        HIT ratio
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">88.3</span></span>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
 
-        <div class="col-xs-6 col-sm-4 col-md-2">
-            <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
-                 style="height: 89px;">
-                <h2 class="card-pf-title" style="height: 17px;">
-                    Average read time
-                </h2>
+        <h4>Operations performance:</h4>
 
-                <div class="card-pf-body" style="height: 50px;">
-                    <p class="card-pf-aggregate-status-notifications">
-                        <span class="small">42 ms</span></span>
-                    </p>
+        <div class="row row-cards-pf">
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        Average READ time
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">42 ms</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        Average WRITE time
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">15 ms</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        Average REMOVE time
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">16 ms</span></span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-xs-6 col-sm-4 col-md-2">
-            <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
-                 style="height: 89px;">
-                <h2 class="card-pf-title" style="height: 17px;">
-                    Average write time
-                </h2>
 
-                <div class="card-pf-body" style="height: 50px;">
-                    <p class="card-pf-aggregate-status-notifications">
-                        <span class="small">15 ms</span></span>
-                    </p>
+        <h4>Caching activity:</h4>
+
+        <div class="row row-cards-pf">
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        # READ Hits
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">343.434</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        # READ Misses
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">333.321</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        # REMOVE Hits
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">343.434</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        # REMOVE misses
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">343.434</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <h4>Entry lifecycle activity:</h4>
+
+        <div class="row row-cards-pf">
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        # Activations
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">4.342</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        # Evictions
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">4.342</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        # Invalidations
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">4.342</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        # Passivations
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">4.342</span></span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-xs-6 col-sm-4 col-md-2">
-            <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
-                 style="height: 89px;">
-                <h2 class="card-pf-title" style="height: 17px;">
-                    # Hits
-                </h2>
 
-                <div class="card-pf-body" style="height: 50px;">
-                    <p class="card-pf-aggregate-status-notifications">
-                        <span class="small">2.343</span></span>
-                    </p>
+        <h4>Cache loader activity:</h4>
+        <div class="row row-cards-pf">
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        # Loads
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">4.342</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        # Misses
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">4.342</span></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        # Stores
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">4.342</span></span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-xs-6 col-sm-4 col-md-2">
-            <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
-                 style="height: 89px;">
-                <h2 class="card-pf-title" style="height: 17px;">
-                    # Misses
-                </h2>
 
-                <div class="card-pf-body" style="height: 50px;">
-                    <p class="card-pf-aggregate-status-notifications">
-                        <span class="small">2.322</span></span>
-                    </p>
+        <h4>Locking activity:</h4>
+        <div class="row row-cards-pf">
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        # Locks available
+                    </h2>
+
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">123</span></span>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-md-2">
-            <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
-                 style="height: 89px;">
-                <h2 class="card-pf-title" style="height: 17px;">
-                    # Passivations
-                </h2>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                     style="height: 89px;">
+                    <h2 class="card-pf-title" style="height: 17px;">
+                        # Locks held
+                    </h2>
 
-                <div class="card-pf-body" style="height: 50px;">
-                    <p class="card-pf-aggregate-status-notifications">
-                        <span class="small">1.324</span></span>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-md-2">
-            <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
-                 style="height: 89px;">
-                <h2 class="card-pf-title" style="height: 17px;">
-                    # Invalidations
-                </h2>
-
-                <div class="card-pf-body" style="height: 50px;">
-                    <p class="card-pf-aggregate-status-notifications">
-                        <span class="small">4.124</span></span>
-                    </p>
+                    <div class="card-pf-body" style="height: 50px;">
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="small">44</span></span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
 
     </div>
-</div>
 
+</div>
 
 
 </body>
