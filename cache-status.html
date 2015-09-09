@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<!--[if IE 9]>
+<html class="ie9"><![endif]-->
+<!--[if gt IE 9]><!-->
+<>
+<!--<![endif]-->
+<head>
+    <title>Infinispan Server Management Console</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="patternfly/img/favicon.ico">
+    <!-- iPad retina icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="152x152"
+          href="patternfly/img/apple-touch-icon-precomposed-152.png">
+    <!-- iPad retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+          href="patternfly/img/apple-touch-icon-precomposed-144.png">
+    <!-- iPad non-retina icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="76x76"
+          href="patternfly/img/apple-touch-icon-precomposed-76.png">
+    <!-- iPad non-retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+          href="patternfly/img/apple-touch-icon-precomposed-72.png">
+    <!-- iPhone 6 Plus icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="120x120"
+          href="patternfly/img/apple-touch-icon-precomposed-180.png">
+    <!-- iPhone retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+          href="patternfly/img/apple-touch-icon-precomposed-114.png">
+    <!-- iPhone non-retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57"
+          href="patternfly/img/apple-touch-icon-precomposed-57.png">
+    <link href="patternfly/css/patternfly.min.css" rel="stylesheet" media="screen, print">
+    <link href="patternfly/css/patternfly-additions.min.css" rel="stylesheet"
+          media="screen, print">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+          media="screen, print">
+    <link href="css/styles.css" rel="stylesheet" media="screen, print">
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="patternfly/js/patternfly.js"></script>
+
+    <style>
+        table.ispn-aligned tr td {
+        vertical-align: middle;
+        }
+    </style>
+</head>
+<>
+<nav class="navbar navbar-default navbar-pf" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            <img src="img/brand.svg" alt="Infinispan Server Management Console"/>
+        </a>
+    </div>
+    <div class="collapse navbar-collapse navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-utility">
+            <li>
+                <a href="#">Status</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="pficon pficon-user"></span>
+                    Brian Johnson <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#">Link</a>
+                    </li>
+                    <li>
+                        <a href="#">Another link</a>
+                    </li>
+                    <li>
+                        <a href="#">Something else here</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="dropdown-submenu">
+                        <a tabindex="-1" href="#">More options</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Another link</a>
+                            </li>
+                            <li>
+                                <a href="#">Something else here</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li>
+                                <a href="#">Separated link</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">One more separated link</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">One more separated link</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-primary">
+            <li class="active">
+                <a href="cache-containers-html">Caches</a>
+            </li>
+            <li>
+                <a href="clusters.html">Clusters</a>
+            </li>
+            <li>
+                <a href="deployments.html" class="active">Deployments</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="cache-containers.html">Cache containers</a>
+                </li>
+                <li>
+                    <a href="cache-container-caches.html">My cache container 1</a>
+                </li>
+                <li class="active"><strong>My cache</strong></li>
+            </ol>
+            <h1>Cache details: 'My cache 1'</h1>
+        </div>
+    </div>
+    <div class="row" style="padding-bottom:20px">
+        <div class="col-sm-10 col-md-10">
+            <span class="fa fa-ban text-danger" title="STOPPED"></span> <span
+                class="text-danger"><strong>STOPPED</strong></span>
+            <span class="small"> |</span>
+            <span class="spinner spinner-xs spinner-inline" title="Cache is under some temporary condition"></span>
+            <span class="text-success"><strong>REBALANCING</strong></span>
+            |
+            <span class="text-success"><strong>INDEXING</strong></span>
+            |
+            <span class="text-danger"><strong>SPLIT</strong></span>
+        </div>
+        <div class="col-sm-2 col-md-2">
+            <div class="dropdown pull-right">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                        data-toggle="dropdown">
+                    ACTIONS
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Stop</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Start</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Delete</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <ul class="nav nav-tabs nav-tabs-pf">
+                <li class="active"><a href="#">General status</a></li>
+                <li><a href="cache-configuration.html">Configuration</a></li>
+                <li><a href="#">Nodes</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+                <p><h4><span class="fa fa-database" title="Persistent"></span> Persistant</h4></p>
+                <p><h4><span class="fa fa-arrow-circle-o-down" title="Transactional"> Transactional</span></h4></p>
+                <p><h4><span class="fa fa-stack-overflow" title="Bounded"></span> Bounded</h4>
+        </div>
+    </div>
+
+    <br>
+    <div class="row row-cards-pf">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                 style="height: 89px;">
+                <h2 class="card-pf-title" style="height: 17px;">
+                    Capacity usage
+                </h2>
+
+                <div class="card-pf-body" style="height: 50px;">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0"
+                             aria-valuemax="100" style="width: 50%;">
+                            <span>ENTRIES: 340 / 680 - 50%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xs-6 col-sm-4 col-md-2">
+            <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                 style="height: 89px;">
+                <h2 class="card-pf-title" style="height: 17px;">
+                    Average read time
+                </h2>
+
+                <div class="card-pf-body" style="height: 50px;">
+                    <p class="card-pf-aggregate-status-notifications">
+                        <span class="small">42 ms</span></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-2">
+            <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                 style="height: 89px;">
+                <h2 class="card-pf-title" style="height: 17px;">
+                    Average write time
+                </h2>
+
+                <div class="card-pf-body" style="height: 50px;">
+                    <p class="card-pf-aggregate-status-notifications">
+                        <span class="small">15 ms</span></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-2">
+            <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                 style="height: 89px;">
+                <h2 class="card-pf-title" style="height: 17px;">
+                    # Hits
+                </h2>
+
+                <div class="card-pf-body" style="height: 50px;">
+                    <p class="card-pf-aggregate-status-notifications">
+                        <span class="small">2.343</span></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-2">
+            <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                 style="height: 89px;">
+                <h2 class="card-pf-title" style="height: 17px;">
+                    # Misses
+                </h2>
+
+                <div class="card-pf-body" style="height: 50px;">
+                    <p class="card-pf-aggregate-status-notifications">
+                        <span class="small">2.322</span></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-2">
+            <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                 style="height: 89px;">
+                <h2 class="card-pf-title" style="height: 17px;">
+                    # Passivations
+                </h2>
+
+                <div class="card-pf-body" style="height: 50px;">
+                    <p class="card-pf-aggregate-status-notifications">
+                        <span class="small">1.324</span></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-2">
+            <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action"
+                 style="height: 89px;">
+                <h2 class="card-pf-title" style="height: 17px;">
+                    # Invalidations
+                </h2>
+
+                <div class="card-pf-body" style="height: 50px;">
+                    <p class="card-pf-aggregate-status-notifications">
+                        <span class="small">4.124</span></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+</body>
+</html>

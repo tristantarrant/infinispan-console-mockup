@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<!--[if IE 9]>
+<html class="ie9"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    <title>Infinispan Server Management Console</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="patternfly/img/favicon.ico">
+    <!-- iPad retina icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="152x152"
+          href="patternfly/img/apple-touch-icon-precomposed-152.png">
+    <!-- iPad retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+          href="patternfly/img/apple-touch-icon-precomposed-144.png">
+    <!-- iPad non-retina icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="76x76"
+          href="patternfly/img/apple-touch-icon-precomposed-76.png">
+    <!-- iPad non-retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+          href="patternfly/img/apple-touch-icon-precomposed-72.png">
+    <!-- iPhone 6 Plus icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="120x120"
+          href="patternfly/img/apple-touch-icon-precomposed-180.png">
+    <!-- iPhone retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+          href="patternfly/img/apple-touch-icon-precomposed-114.png">
+    <!-- iPhone non-retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57"
+          href="patternfly/img/apple-touch-icon-precomposed-57.png">
+    <link href="patternfly/css/patternfly.min.css" rel="stylesheet" media="screen, print">
+    <link href="patternfly/css/patternfly-additions.min.css" rel="stylesheet"
+          media="screen, print">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+          media="screen, print">
+    <link href="css/styles.css" rel="stylesheet" media="screen, print">
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="patternfly/js/patternfly.js"></script>
+
+    <style>
+        table.ispn-aligned tr td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-pf" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            <img src="img/brand.svg" alt="Infinispan Server Management Console"/>
+        </a>
+    </div>
+    <div class="collapse navbar-collapse navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-utility">
+            <li>
+                <a href="#">Status</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="pficon pficon-user"></span>
+                    Brian Johnson <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#">Link</a>
+                    </li>
+                    <li>
+                        <a href="#">Another link</a>
+                    </li>
+                    <li>
+                        <a href="#">Something else here</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="dropdown-submenu">
+                        <a tabindex="-1" href="#">More options</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Another link</a>
+                            </li>
+                            <li>
+                                <a href="#">Something else here</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li>
+                                <a href="#">Separated link</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">One more separated link</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">One more separated link</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-primary">
+            <li class="active">
+                <a href="cache-containers-html">Caches</a>
+            </li>
+            <li>
+                <a href="clusters.html">Clusters</a>
+            </li>
+            <li>
+                <a href="deployments.html" class="active">Deployments</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="cache-containers.html">Cache containers</a>
+                </li>
+                <li>
+                    <a href="cache-container-detail.html">My cache container 1</a>
+                </li>
+                <li class="active"><strong>My cache</strong></li>
+            </ol>
+            <div class="actions pull-right">
+                <a href="#"><span class="pficon pficon-refresh"></span> Refresh</a>
+            </div>
+            <h1>Cache details 'My cache 1'</h1>
+            <br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#">Status</a></li>
+                <li><a href="#">Configuration</a></li>
+                <li><a href="#">Nodes</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-9 col-md-10 col-sm-push-3 col-md-push-2">
+            <div>
+                <div class="ng-isolate-scope">
+                    <ul class="nav nav-tabs" ng-class="{'nav-stacked': vertical, 'nav-justified': justified}" ng-transclude="">
+                        <li ng-class="{active: active, disabled: disabled}" heading="General" active="true" class="ng-isolate-scope">
+                            <a ng-click="select()" tab-heading-transclude="" class="ng-binding">General</a>
+                        </li>
+                        <li ng-class="{active: active, disabled: disabled}" heading="Locking" active="false" class="ng-isolate-scope">
+                            <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Locking</a>
+                        </li>
+                        <li ng-class="{active: active, disabled: disabled}" heading="Eviction" active="false" class="ng-isolate-scope">
+                            <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Eviction</a>
+                        </li>
+                        <li ng-class="{active: active, disabled: disabled}" heading="Expiration" active="false" class="ng-isolate-scope">
+                            <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Expiration</a>
+                        </li>
+                        <li ng-class="{active: active, disabled: disabled}" heading="Compatibility" active="false" class="ng-isolate-scope">
+                            <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Compatibility</a>
+                        </li>
+                        <li ng-class="{active: active, disabled: disabled}" heading="TX" class="ng-isolate-scope">
+                            <a ng-click="select()" tab-heading-transclude="" class="ng-binding">TX</a>
+                        </li>
+                        <li ng-class="{active: active, disabled: disabled}" heading="State Transfer" class="ng-isolate-scope">
+                            <a ng-click="select()" tab-heading-transclude="" class="ng-binding">State Transfer</a>
+                        </li>
+
+                        <li ng-class="{active: active, disabled: disabled}" heading="Loader" class="ng-isolate-scope">
+                            <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Loader</a>
+                        </li>
+
+                        <li ng-class="{active: active, disabled: disabled}" heading="File Store" class="ng-isolate-scope">
+                            <a ng-click="select()" tab-heading-transclude="" class="ng-binding">File Store</a>
+                        </li>
+                        <li ng-class="{active: active, disabled: disabled}" heading="Remote Store" class="ng-isolate-scope">
+                            <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Remote Store</a>
+                        </li>
+                        <li ng-class="{active: active, disabled: disabled}" heading="JDBC Store" class="ng-isolate-scope">
+                            <a ng-click="select()" tab-heading-transclude="" class="ng-binding">JDBC Store</a>
+                        </li>
+
+                        <li ng-class="{active: active, disabled: disabled}" heading="Level DB Store" class="ng-isolate-scope">
+                            <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Level DB Store</a>
+                        </li>
+
+                        <li ng-class="{active: active, disabled: disabled}" heading="Backup" class="ng-isolate-scope">
+                            <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Backup</a>
+                        </li>
+
+                        <li ng-class="{active: active, disabled: disabled}" heading="Security" class="ng-isolate-scope active">
+                            <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Security</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+
+                        <div class="container-fluid ng-isolate-scope" data="currentCache" metadata="resolveDescription('general')" init-defaults="initDefaults" read-only="readOnly">
+                            <form class="form-horizontal ng-pristine ng-valid-required ng-invalid ng-invalid-positive-integer" name="form" novalidate="">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Name</label>
+
+                                    <div class="col-md-10" ng-class="{ 'has-error' : form.cacheName.$invalid &amp;&amp; !form.cacheName.$pristine }">
+                                        <input type="text" name="cacheName" ng-model="data.name" ng-disabled="readOnly" required="" class="ng-pristine ng-untouched ng-valid ng-valid-required" disabled="disabled">
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                    <!-- ngIf: form.cacheName.$invalid && !form.cacheName.$pristine -->
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Type</label>
+
+                                    <div class="col-md-10">
+                                        <select ng-model="data.type" ng-options="ct as ct for ct in cacheTypes" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled"><option value="string:distributed-cache" label="distributed-cache" selected="selected">distributed-cache</option><option value="string:local-cache" label="local-cache">local-cache</option><option value="string:replicated-cache" label="replicated-cache">replicated-cache</option><option value="string:invalidation-cache" label="invalidation-cache">invalidation-cache</option></select>
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The type of cache" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Configuration template</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" ng-model="data.template" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Configuration template used to create this cache instance" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Mode</label>
+
+                                    <div class="col-md-10">
+                                        <select ng-model="data.configuration.mode" ng-options="item as item for item in metadata.mode.allowed" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled"><option value="string:SYNC" label="SYNC" selected="selected">SYNC</option><option value="string:ASYNC" label="ASYNC">ASYNC</option></select>
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Sets the clustered cache mode, ASYNC for asynchronous operation, or SYNC for synchronous operation" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Auto config</label>
+
+                                    <div class="col-md-10">
+                                        <input type="checkbox" ng-model="data.configuration['auto-config']" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If enabled, will configure indexing automatically based on cache type" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Batching</label>
+
+                                    <div class="col-md-10">
+                                        <input type="checkbox" ng-model="data.configuration.batching" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If enabled, the invocation batching API will be made available for this cache." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Capacity factor</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" ng-model="data.configuration['capacity-factor']" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Controls the proportion of entries that will reside on the local node, compared to the other nodes in the cluster. Value must be positive. This element is only used in 'distributed' cache instances." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">JNDI name</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" ng-model="data.configuration['jndi-name']" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The jndi-name to which to bind this cache instance." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" ng-class="{'has-error': !form.lifespan.$pristine &amp;&amp; form.lifespan.$invalid }">
+                                    <label class="col-md-2 control-label">L1 lifespan</label>
+                                    <div class="col-md-10">
+                                        <input type="text" name="lifespan" ng-model="data.configuration['l1-lifespan']" ng-disabled="readOnly" positive-integer="" class="ng-pristine ng-untouched ng-invalid ng-invalid-positive-integer" disabled="disabled">
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Maximum lifespan of an entry placed in the L1 cache. This element configures the L1 cache behavior in 'distributed' caches instances. In any other cache modes, this element is ignored." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                    <!-- ngIf: !form.lifespan.$pristine && form.lifespan.$invalid -->
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Module</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" ng-model="data.configuration.module" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The module whose class loader should be used when building this cache's configuration." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" ng-class="{'has-error': !form.owners.$pristine &amp;&amp; form.owners.$invalid }">
+                                    <label class="col-md-2 control-label">Owners</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" name="owners" ng-model="data.configuration.owners" ng-disabled="readOnly" positive-integer="" class="ng-pristine ng-untouched ng-invalid ng-invalid-positive-integer" disabled="disabled">
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Number of cluster-wide replicas for each cache entry." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                    <!-- ngIf: !form.owners.$pristine && form.owners.$invalid -->
+                                </div>
+
+                                <div class="form-group" ng-class="{'has-error': !form.segments.$pristine &amp;&amp; form.segments.$invalid }">
+                                    <label class="col-md-2 control-label">Segments</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" name="segments" ng-model="data.configuration.segments" ng-disabled="readOnly" positive-integer="" class="ng-pristine ng-untouched ng-invalid ng-invalid-positive-integer" disabled="disabled">
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Controls the number of hash space segments which is the granularity for key distribution in the cluster. Value must be strictly positive." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                    <!-- ngIf: !form.segments.$pristine && form.segments.$invalid -->
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Start</label>
+
+                                    <div class="col-md-10">
+                                        <select ng-model="data.configuration.start" ng-options="item as item for item in metadata.start.allowed" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled"><option value="string:EAGER" label="EAGER" selected="selected">EAGER</option><option value="string:LAZY" label="LAZY">LAZY</option></select>
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The cache start mode, which can be EAGER (immediate start) or LAZY (on-demand start)." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Statistics</label>
+
+                                    <div class="col-md-10">
+                                        <input type="checkbox" ng-model="data.configuration.statistics" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If enabled, statistics will be collected for this cache" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+
+                        <!-- <locking data='currentCache.data.locking.LOCKING' metadata="resolveDescription('locking')"
+                                 init-defaults="initDefaults" read-only="readOnly"></locking> -->
+                        <div class="container-fluid ng-isolate-scope" fields="['acquire-timeout', 'concurrency-level', 'isolation', 'striping']" data="currentCache.configuration.locking.LOCKING" metadata="resolveDescription('locking')" init-defaults="initDefaults" read-only="readOnly">
+                            <div class="row">
+                                <!-- ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Acquire Timeout</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Maximum time to attempt a particular lock acquisition." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Concurrency Level</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The estimated number of concurrently updating threads which this cache can support. May return null if the cache is not started." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Isolation</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) --><select ng-model="data[field]" ng-options="item as item for item in metadata[field].allowed" ng-disabled="readOnly" ng-if="isMultiValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><option selected="selected"></option><option value="string:NONE" label="NONE">NONE</option><option value="string:SERIALIZABLE" label="SERIALIZABLE">SERIALIZABLE</option><option value="string:REPEATABLE_READ" label="REPEATABLE_READ">REPEATABLE_READ</option><option value="string:READ_COMMITTED" label="READ_COMMITTED">READ_COMMITTED</option><option value="string:READ_UNCOMMITTED" label="READ_UNCOMMITTED">READ_UNCOMMITTED</option></select><!-- end ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Sets the cache locking isolation level." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Striping</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, a pool of shared locks is maintained for all entries that need to be locked. Otherwise, a lock is created per entry in the cache. Lock striping helps control memory footprint but may reduce concurrency in the system." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields -->
+                            </div>
+                        </div></div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+
+                        <!-- <eviction data='currentCache.data.eviction.EVICTION' metadata="resolveDescription('eviction')"
+                                  init-defaults="initDefaults" read-only="readOnly"></eviction> -->
+
+                        <div class="container-fluid ng-isolate-scope" fields="['max-entries', 'strategy']" data="currentCache.configuration.eviction.EVICTION" metadata="resolveDescription('eviction')" init-defaults="initDefaults" read-only="readOnly">
+                            <div class="row">
+                                <!-- ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Max Entries</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Maximum number of entries in a cache instance. -1 means no limit. Also sets the type to COUNT." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Strategy</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) --><select ng-model="data[field]" ng-options="item as item for item in metadata[field].allowed" ng-disabled="readOnly" ng-if="isMultiValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><option value="?" selected="selected"></option><option value="string:NONE" label="NONE">NONE</option><option value="string:UNORDERED" label="UNORDERED">UNORDERED</option><option value="string:FIFO" label="FIFO">FIFO</option><option value="string:LRU" label="LRU">LRU</option><option value="string:LIRS" label="LIRS">LIRS</option></select><!-- end ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Sets the cache eviction strategy. Available options are 'UNORDERED', 'FIFO', 'LRU', 'LIRS' and 'NONE' (to disable eviction)." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields -->
+                            </div>
+                        </div></div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+
+                        <!-- <expiration data='currentCache.data.expiration.EXPIRATION' metadata="resolveDescription('expiration')"
+                                    init-defaults="initDefaults" read-only="readOnly"></expiration> -->
+
+                        <div class="container-fluid ng-isolate-scope" fields="['lifespan', 'interval', 'max-idle']" data="currentCache.configuration.expiration.EXPIRATION" metadata="resolveDescription('expiration')" init-defaults="initDefaults" read-only="readOnly">
+                            <div class="row">
+                                <!-- ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Lifespan</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Maximum lifespan of a cache entry, after which the entry is expired cluster-wide, in milliseconds. -1 means the entries never expire." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Interval</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Interval (in milliseconds) between subsequent runs to purge expired entries from memory and any cache stores. If you wish to disable the periodic eviction process altogether, set wakeupInterval to -1." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Max Idle</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Maximum idle time a cache entry will be maintained in the cache, in milliseconds. If the idle time is exceeded, the entry will be expired cluster-wide. -1 means the entries never expire." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields -->
+                            </div>
+                        </div></div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+
+
+                        <div class="container-fluid ng-isolate-scope" fields="['enabled', 'marshaller']" data="currentCache.configuration.compatibility.COMPATIBILITY" metadata="resolveDescription('compatibility')" init-defaults="initDefaults" read-only="readOnly">
+                            <div class="row">
+                                <!-- ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Enabled</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Enables compatibility mode for the cache." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Marshaller</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The marshaller to use for compatibility mode." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields -->
+                            </div>
+                        </div></div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+
+                        <!-- <tx data="currentCache.data.transaction.TRANSACTION" metadata="resolveDescription('tx')"
+                            init-defaults="initDefaults" read-only="readOnly"></tx> -->
+
+                        <div class="container-fluid ng-isolate-scope" fields="['locking', 'mode', 'stop-timeout']" data="currentCache.configuration.transaction.TRANSACTION" metadata="resolveDescription('tx')" init-defaults="initDefaults" read-only="readOnly">
+                            <div class="row">
+                                <!-- ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Locking</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) --><select ng-model="data[field]" ng-options="item as item for item in metadata[field].allowed" ng-disabled="readOnly" ng-if="isMultiValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><option selected="selected"></option><option value="string:OPTIMISTIC" label="OPTIMISTIC">OPTIMISTIC</option><option value="string:PESSIMISTIC" label="PESSIMISTIC">PESSIMISTIC</option></select><!-- end ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The locking configuration of the cache." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Mode</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) --><select ng-model="data[field]" ng-options="item as item for item in metadata[field].allowed" ng-disabled="readOnly" ng-if="isMultiValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><option value="string:NONE" label="NONE" selected="selected">NONE</option><option value="string:NON_XA" label="NON_XA">NON_XA</option><option value="string:NON_DURABLE_XA" label="NON_DURABLE_XA">NON_DURABLE_XA</option><option value="string:FULL_XA" label="FULL_XA">FULL_XA</option></select><!-- end ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Sets the clustered cache mode, ASYNC for asynchronous operation, or SYNC for synchronous operation." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Stop Timeout</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If there are any ongoing transactions when a cache is stopped, Infinispan waits for ongoing remote and local transactions to finish. The amount of time to wait for is defined by the cache stop timeout." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields -->
+                            </div>
+                        </div></div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+
+                        <div class="container-fluid ng-isolate-scope" fields="['await-initial-transfer', 'chunk-size', 'enabled', 'timeout']" data="currentCache.configuration['state-transfer'].STATE_TRANSFER" metadata="resolveDescription('statetransfer')" init-defaults="initDefaults" read-only="readOnly">
+                            <div class="row">
+                                <!-- ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Await Initial Transfer</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Wait for the initial state transfer to complete before making a cache available." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Chunk Size</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The size, in bytes, in which to batch the transfer of cache entries." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Enabled</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If enabled, this will cause the cache to ask neighboring caches for state when it starts up, so the cache starts 'warm', although it will impact startup time." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Timeout</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The maximum amount of time (ms) to wait for state from neighboring caches, before throwing an exception and aborting startup." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields -->
+                            </div>
+                        </div></div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+
+                        <div class="container-fluid ng-isolate-scope" fields="['class', 'preload', 'shared']" data="currentCache.configuration['loader'].LOADER" metadata="resolveDescription('loader')" init-defaults="initDefaults" read-only="readOnly">
+                            <div class="row">
+                                <!-- ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Class</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The custom loader implementation class to use for this cache loader." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Preload</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, when the cache starts, data stored in the cache store will be pre-loaded into memory. This is particularly useful when data in the cache store will be needed immediately after startup and you want to avoid cache operations being delayed as a result of loading this data lazily. Can be used to provide a 'warm-cache' on startup, however there is a performance penalty as startup time is affected by this process." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Shared</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="This setting should be set to true when multiple cache instances share the same cache store (e.g., multiple nodes in a cluster using a JDBC-based CacheStore pointing to the same, shared database.) Setting this to true avoids multiple cache instances writing the same modification multiple times. If enabled, only the node where the modification originated will write to the cache store. If disabled, each individual cache reacts to a potential remote update by storing the data to the cache store." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields -->
+                            </div>
+                        </div></div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+
+
+                        <div class="container-fluid ng-isolate-scope" fields="['path', 'relative-to', 'max-entries', 'fetch-state', 'passivation',
+            'preload', 'purge', 'read-only', 'shared', 'singleton']" data="currentCache.configuration['file-store'].FILE_STORE" metadata="resolveDescription('filestore')" init-defaults="initDefaults" read-only="readOnly">
+                            <div class="row">
+                                <!-- ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Path</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="An absolute path if relativeTo is null, otherwise the relative path to relativeTo" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Relative To</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The path this is relative to" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Max Entries</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The maximum number of entries." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Fetch State</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, fetch persistent state when joining a cluster. If multiple cache stores are chained, only one of them can have this property enabled." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Passivation</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, data is only written to the cache store when it is evicted from memory, a phenomenon known as 'passivation'. Next time the data is requested, it will be 'activated' which means that data will be brought back to memory and removed from the persistent store. f false, the cache store contains a copy of the contents in memory, so writes to cache result in cache store writes. This essentially gives you a 'write-through' configuration." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Preload</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, when the cache starts, data stored in the cache store will be pre-loaded into memory. This is particularly useful when data in the cache store will be needed immediately after startup and you want to avoid cache operations being delayed as a result of loading this data lazily. Can be used to provide a 'warm-cache' on startup, however there is a performance penalty as startup time is affected by this process." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Purge</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, purges this cache store when it starts up." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Read Only</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, the cache store will only be used to load entries. Any modifications made to the caches will not be applied to the store." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Shared</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="This setting should be set to true when multiple cache instances share the same cache store (e.g., multiple nodes in a cluster using a JDBC-based CacheStore pointing to the same, shared database.) Setting this to true avoids multiple cache instances writing the same modification multiple times. If enabled, only the node where the modification originated will write to the cache store. If disabled, each individual cache reacts to a potential remote update by storing the data to the cache store." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Singleton</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, the singleton store cache store is enabled. SingletonStore is a delegating cache store used for situations when only one instance in a cluster should interact with the underlying store." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields -->
+                            </div>
+                        </div></div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+
+                        <div class="container-fluid ng-isolate-scope" fields="['cache', 'fetch-state', 'passivation', 'preload', 'raw-values', 'purge', 'read-only',
+              'shared', 'singleton', 'socket-timeout', 'tcp-no-delay']" data="currentCache.configuration['remote-store'].REMOTE_STORE" metadata="resolveDescription('remotestore')" init-defaults="initDefaults" read-only="readOnly">
+                            <div class="row">
+                                <!-- ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Cache</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The name of the remote cache to use for this remote store." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Fetch State</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, fetch persistent state when joining a cluster. If multiple cache stores are chained, only one of them can have this property enabled." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Passivation</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, data is only written to the cache store when it is evicted from memory, a phenomenon known as 'passivation'. Next time the data is requested, it will be 'activated' which means that data will be brought back to memory and removed from the persistent store. f false, the cache store contains a copy of the contents in memory, so writes to cache result in cache store writes. This essentially gives you a 'write-through' configuration." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Preload</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, when the cache starts, data stored in the cache store will be pre-loaded into memory. This is particularly useful when data in the cache store will be needed immediately after startup and you want to avoid cache operations being delayed as a result of loading this data lazily. Can be used to provide a 'warm-cache' on startup, however there is a performance penalty as startup time is affected by this process." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Raw Values</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Stores information on the remote cache in a raw format suitable for interoperability with other RemoteCacheManagers" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Purge</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, purges this cache store when it starts up." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Read Only</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, the cache store will only be used to load entries. Any modifications made to the caches will not be applied to the store." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Shared</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="This setting should be set to true when multiple cache instances share the same cache store (e.g., multiple nodes in a cluster using a JDBC-based CacheStore pointing to the same, shared database.) Setting this to true avoids multiple cache instances writing the same modification multiple times. If enabled, only the node where the modification originated will write to the cache store. If disabled, each individual cache reacts to a potential remote update by storing the data to the cache store." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Singleton</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, the singleton store cache store is enabled. SingletonStore is a delegating cache store used for situations when only one instance in a cluster should interact with the underlying store." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Socket Timeout</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="A socket timeout for remote cache communication." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Tcp No Delay</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="A TCP_NODELAY value for remote cache communication." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields -->
+                            </div>
+                        </div></div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+
+                        <div class="container-fluid ng-isolate-scope" data="currentCache.configuration['string-keyed-jdbc-store'].STRING_KEYED_JDBC_STORE" metadata="resolveDescription('jdbcstore')" init-defaults="initDefaults" read-only="readOnly">
+                            <div class="row">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Type</label>
+
+                                        <div class="col-md-10">
+                                            <select ng-model="data.type" ng-options="item as item for item in metadata.storeTypes" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled"><option value="?" selected="selected"></option><option value="string:string-keyed-jdbc-store" label="string-keyed-jdbc-store">string-keyed-jdbc-store</option><option value="string:mixed-keyed-jdbc-store" label="mixed-keyed-jdbc-store">mixed-keyed-jdbc-store</option><option value="string:binary-keyed-jdbc-store" label="binary-keyed-jdbc-store">binary-keyed-jdbc-store</option></select>
+                                            <i class="fa fa-info-circle ng-scope" tooltip="The type of JDBC store" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Datasource</label>
+
+                                        <div class="col-md-6">
+                                            <input type="text" ng-model="data.datasource" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                            <i class="fa fa-info-circle ng-scope" tooltip="A datasource reference for this datastore." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Dialect</label>
+
+                                        <div class="col-md-6">
+                                            <select ng-model="data.dialect" ng-options="item as item for item in metadata.dialect.allowed" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled"><option value="?" selected="selected"></option><option value="string:MYSQL" label="MYSQL">MYSQL</option><option value="string:POSTGRES" label="POSTGRES">POSTGRES</option><option value="string:DERBY" label="DERBY">DERBY</option><option value="string:HSQL" label="HSQL">HSQL</option><option value="string:H2" label="H2">H2</option><option value="string:SQLITE" label="SQLITE">SQLITE</option><option value="string:DB2" label="DB2">DB2</option><option value="string:DB2_390" label="DB2_390">DB2_390</option><option value="string:INFORMIX" label="INFORMIX">INFORMIX</option><option value="string:INTERBASE" label="INTERBASE">INTERBASE</option><option value="string:FIREBIRD" label="FIREBIRD">FIREBIRD</option><option value="string:SQL_SERVER" label="SQL_SERVER">SQL_SERVER</option><option value="string:ACCESS" label="ACCESS">ACCESS</option><option value="string:ORACLE" label="ORACLE">ORACLE</option><option value="string:SYBASE" label="SYBASE">SYBASE</option></select>
+                                            <i class="fa fa-info-circle ng-scope" tooltip="The dialect of this datastore." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                        </div>
+                                    </div>
+
+                                    <!-- ngIf: data.type === 'string-keyed-jdbc-store' || data.type === 'mixed-keyed-jdbc-store' -->
+
+                                    <!-- ngIf: data.type === 'binary-keyed-jdbc-store' || data.type === 'mixed-keyed-jdbc-store' -->
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Fetch state</label>
+
+                                        <div class="col-md-6">
+                                            <input type="checkbox" ng-model="data['fetch-state']" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                            <i class="fa fa-info-circle ng-scope" tooltip="If true, fetch persistent state when joining a cluster. If multiple cache stores are chained, only one of them can have this property enabled." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Passivation</label>
+
+                                        <div class="col-md-6">
+                                            <input type="checkbox" ng-model="data.passivation" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                            <i class="fa fa-info-circle ng-scope" tooltip="If true, data is only written to the cache store when it is evicted from memory, a phenomenon known as 'passivation'. Next time the data is requested, it will be 'activated' which means that data will be brought back to memory and removed from the persistent store. f false, the cache store contains a copy of the contents in memory, so writes to cache result in cache store writes. This essentially gives you a 'write-through' configuration." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Preload</label>
+
+                                        <div class="col-md-6">
+                                            <input type="checkbox" ng-model="data.preload" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                            <i class="fa fa-info-circle ng-scope" tooltip="If true, when the cache starts, data stored in the cache store will be pre-loaded into memory. This is particularly useful when data in the cache store will be needed immediately after startup and you want to avoid cache operations being delayed as a result of loading this data lazily. Can be used to provide a 'warm-cache' on startup, however there is a performance penalty as startup time is affected by this process." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Purge</label>
+
+                                        <div class="col-md-6">
+                                            <input type="checkbox" ng-model="data.purge" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                            <i class="fa fa-info-circle ng-scope" tooltip="If true, purges this cache store when it starts up." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Read only</label>
+
+                                        <div class="col-md-6">
+                                            <input type="checkbox" ng-model="data['read-only']" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                            <i class="fa fa-info-circle ng-scope" tooltip="If true, the cache store will only be used to load entries. Any modifications made to the caches will not be applied to the store." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Shared</label>
+
+                                        <div class="col-md-6">
+                                            <input type="checkbox" ng-model="data.shared" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                            <i class="fa fa-info-circle ng-scope" tooltip="This setting should be set to true when multiple cache instances share the same cache store (e.g., multiple nodes in a cluster using a JDBC-based CacheStore pointing to the same, shared database.) Setting this to true avoids multiple cache instances writing the same modification multiple times. If enabled, only the node where the modification originated will write to the cache store. If disabled, each individual cache reacts to a potential remote update by storing the data to the cache store." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Singleton</label>
+
+                                        <div class="col-md-6">
+                                            <input type="checkbox" ng-model="data.singleton" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                            <i class="fa fa-info-circle ng-scope" tooltip="If true, the singleton store cache store is enabled. SingletonStore is a delegating cache store used for situations when only one instance in a cluster should interact with the underlying store." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+
+                        <div class="container-fluid ng-isolate-scope" fields="['path', 'cache-size', 'block-size', 'clear-threshold', 'fetch-state', 'passivation',
+            'preload', 'purge', 'read-only', 'shared', 'singleton']" data="currentCache.configuration['leveldb-store'].LEVEL_DB_STORE" metadata="resolveDescription('leveldbstore')" init-defaults="initDefaults" read-only="readOnly">
+                            <div class="row">
+                                <!-- ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Path</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="An absolute path if relativeTo is null, otherwise the relative path to relativeTo" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Cache Size</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Cache size for the cache store" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Block Size</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The cache store block size" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Clear Threshold</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="Cache store cache clear threshold" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Fetch State</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, fetch persistent state when joining a cluster. If multiple cache stores are chained, only one of them can have this property enabled." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Passivation</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, data is only written to the cache store when it is evicted from memory, a phenomenon known as 'passivation'. Next time the data is requested, it will be 'activated' which means that data will be brought back to memory and removed from the persistent store. f false, the cache store contains a copy of the contents in memory, so writes to cache result in cache store writes. This essentially gives you a 'write-through' configuration." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Preload</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, when the cache starts, data stored in the cache store will be pre-loaded into memory. This is particularly useful when data in the cache store will be needed immediately after startup and you want to avoid cache operations being delayed as a result of loading this data lazily. Can be used to provide a 'warm-cache' on startup, however there is a performance penalty as startup time is affected by this process." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Purge</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, purges this cache store when it starts up." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Read Only</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, the cache store will only be used to load entries. Any modifications made to the caches will not be applied to the store." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Shared</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="This setting should be set to true when multiple cache instances share the same cache store (e.g., multiple nodes in a cluster using a JDBC-based CacheStore pointing to the same, shared database.) Setting this to true avoids multiple cache instances writing the same modification multiple times. If enabled, only the node where the modification originated will write to the cache store. If disabled, each individual cache reacts to a potential remote update by storing the data to the cache store." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Singleton</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If true, the singleton store cache store is enabled. SingletonStore is a delegating cache store used for situations when only one instance in a cluster should interact with the underlying store." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields -->
+                            </div>
+                        </div></div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+
+                        <div class="container-fluid ng-isolate-scope" fields="['after-failures', 'enabled', 'failure-policy', 'min-wait', 'strategy', 'timeout']" data="currentCache.configuration['backup'].BACKUP" metadata="resolveDescription('backup')" init-defaults="initDefaults" read-only="readOnly">
+                            <div class="row">
+                                <!-- ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">After Failures</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The number of failed request operations after which this site should be taken offline." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Enabled</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="checkbox" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="If enabled, the cache will be backed-up to the remote site." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Failure Policy</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) --><select ng-model="data[field]" ng-options="item as item for item in metadata[field].allowed" ng-disabled="readOnly" ng-if="isMultiValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><option value="?" selected="selected"></option><option value="string:IGNORE" label="IGNORE">IGNORE</option><option value="string:WARN" label="WARN">WARN</option><option value="string:FAIL" label="FAIL">FAIL</option><option value="string:CUSTOM" label="CUSTOM">CUSTOM</option></select><!-- end ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The failure policy to use for the cache backup." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Min Wait</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The minimal number of millis to wait before taking this site offline, even in the case 'after-failures' is reached." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Strategy</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) --><select ng-model="data[field]" ng-options="item as item for item in metadata[field].allowed" ng-disabled="readOnly" ng-if="isMultiValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><option value="?" selected="selected"></option><option value="string:SYNC" label="SYNC">SYNC</option><option value="string:ASYNC" label="ASYNC">ASYNC</option></select><!-- end ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The strategy to use for the cache backup." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields --><div class="form-horizontal ng-scope" ng-repeat="field in fields">
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label ng-binding">Timeout</label>
+
+                                    <div class="col-md-6">
+                                        <!-- ngIf: isMultiValue(field) -->
+                                        <!-- ngIf: isSingleValue(field) --><input type="text" ng-model="data[field]" ng-disabled="readOnly" ng-if="isSingleValue(field)" class="ng-pristine ng-untouched ng-valid ng-scope" disabled="disabled"><!-- end ngIf: isSingleValue(field) -->
+                                        <i class="fa fa-info-circle ng-scope" tooltip="The time to wait for responses from the backup site." tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                    </div>
+                                </div>
+
+                            </div><!-- end ngRepeat: field in fields -->
+                            </div>
+                        </div></div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope active" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+
+                        <div class="container-fluid ng-isolate-scope" data="currentCache.configuration.security.authorization" metadata="resolveDescription('authorization')" init-defaults="initDefaults" read-only="readOnly">
+                            <div class="row">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Enabled</label>
+
+                                        <div class="col-md-6">
+                                            <input type="checkbox" ng-model="data.authorization.enabled" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                            <i class="fa fa-info-circle ng-scope" tooltip="Enables authorization checks for a cache" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Roles</label>
+
+                                        <div class="col-md-6">
+                                            <input type="text" ng-model="data.authorization.roles" ng-disabled="readOnly" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                            <i class="fa fa-info-circle ng-scope" tooltip="The list of roles which are allowed to access a cache" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end ngRepeat: tab in tabs -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-3 col-md-2 col-sm-pull-9 col-md-pull-10 sidebar-pf sidebar-pf-left">
+            <br>
+            <small>Quick search:</small>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

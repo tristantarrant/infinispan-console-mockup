@@ -9,4 +9,4 @@ Available screens:
 
 - [CONTAINER DETAIL] (https://rawgit.com/pzapata/infinispan-console-mockup/master/cache-container-caches.html)
 
-- [CACHE DETAIL] (https://rawgit.com/pzapata/infinispan-console-mockup/master/cache-detail.html)
+- [CACHE DETAIL] (https://rawgit.com/pzapata/infinispan-console-mockup/master/cache-status.html)
