@@ -23,6 +23,8 @@
     $('#cache-cards > [class*=\'col\'] > .card-pf').matchHeight();
     // initialize tooltips
     $('[data-toggle=\'tooltip\']').tooltip();
+    // initialize datatables
+    $('.datatable').dataTable({ "dom": '<"top">rt<"bottom">', "ordering": false});
     // initialize sliders
     $('[class*=\'metric-slider\']').each(function(i, element) {
         noUiSlider.create(element, {
