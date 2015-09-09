@@ -27,9 +27,8 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen, print">
     <link href="css/styles.css" rel="stylesheet" media="screen, print">
     <script src="components/jquery/dist/jquery.js"></script>
-    <script src="components/matchHeight/jquery.matchHeight-min.js"></script>
     <script src="components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
     <script src="patternfly/js/patternfly.js"></script>
     <script src="js/globals.js"></script>
 </head>
@@ -85,60 +84,68 @@
                     </li>
                     <li class="active"><strong>My cache container 1</strong></li>
                 </ol>
-                <div class="page-header page-header-bleed-right">
-                    <div class="actions pull-right">
-                        <a href="#"><span class="pficon pficon-refresh"></span> Refresh</a>
-                    </div>
-                    <h1>Cache container 'My cache container 1'</h1>
+                <div class="actions pull-right">
+                    <a href="#"><span class="pficon pficon-refresh"></span> Refresh</a>
                 </div>
-                <div class="col-sm-12">
-                    <ul class="nav nav-tabs">
-                        <li><a href="cache-container-caches.html">Caches</a></li>
-                        <li><a href="cache-container-performance.html">Performance</a></li>
-                        <li><a href="cache-container-configuration.html">Configuration</a></li>
-                        <li><a href="cache-container-schemas.html">Schemas</a></li>
-                        <li class="active"><a href="cache-container-executables.html">Executables</a></li>
-                    </ul>
-                </div>
+                <h1>Cache container 'My cache container 1'</h1>
+                <br>
             </div>
         </div>
-        <table class="datatable table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Language</th>
-                    <th>Parameters</th>
-                    <th>Execution Mode</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Exec #1</td>
-                    <td>Javascript</td>
-                    <td>a1, a2</td>
-                    <td>Local</td>
-                </tr>
-                <tr>
-                    <td>Exec #2</td>
-                    <td>Scala</td>
-                    <td>a1, a2</td>
-                    <td>Distributed</td>
-                </tr>
-                <tr>
-                    <td>Exec #3</td>
-                    <td>Java</td>
-                    <td>a1, a2</td>
-                    <td>Local</td>
-                </tr>
-            </tbody>
-        </table>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget eros tincidunt, semper ante nec, dapibus ante.</p>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <ul class="nav nav-tabs">
+                    <li><a href="cache-container-caches.html">Caches</a></li>
+                    <li><a href="cache-container-performance.html">Performance</a></li>
+                    <li class="active"><a href="cache-container-configuration.html">Configuration</a></li>
+                    <li><a href="cache-container-schemas.html">Schemas</a></li>
+                    <li><a href="cache-container-executables.html">Executables</a></li>
+                </ul>
+                
+                <ul class="nav nav-tabs nav-tabs-pf">
+                    <li class="active"><a href="cache-container-configuration.html">Transport</a></li>
+                    <li><a href="cache-container-configuration-threadpools.html">Thread pools</a></li>
+                    <li><a href="cache-container-configuration-security.html">Security</a></li>
+                </ul>
+                <br />
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="container-transport-channel">Channel</label>
+                        <div class="col-md-10">
+                            <select class="selectpicker"  id="container-transport-channel">
+                                <option data-subtext="Default">cluster</option>
+                                <option>xsite</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="container-transport-locktimeout">Lock timeout</label>
+                        <div class="col-md-1">
+                            <input type="text" name="container-transport-locktimeout" accept=""id="container-transport-locktimeout" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Strict peer-to-peer</label>
+                        <div class="col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-2">
+                            <button type="button" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-default">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
     </div>
-    <!-- /col -->
-    </div>
-    <!-- /row -->
-    </div>
-    <!-- /container -->
 </body>
 
 </html>
