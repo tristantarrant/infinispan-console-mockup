@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--[if IE 9]>
+<html class="ie9"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    <title>Infinispan Server Management Console</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="patternfly/img/favicon.ico">
+    <!-- iPad retina icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="152x152"
+          href="patternfly/img/apple-touch-icon-precomposed-152.png">
+    <!-- iPad retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+          href="patternfly/img/apple-touch-icon-precomposed-144.png">
+    <!-- iPad non-retina icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="76x76"
+          href="patternfly/img/apple-touch-icon-precomposed-76.png">
+    <!-- iPad non-retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+          href="patternfly/img/apple-touch-icon-precomposed-72.png">
+    <!-- iPhone 6 Plus icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="120x120"
+          href="patternfly/img/apple-touch-icon-precomposed-180.png">
+    <!-- iPhone retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+          href="patternfly/img/apple-touch-icon-precomposed-114.png">
+    <!-- iPhone non-retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57"
+          href="patternfly/img/apple-touch-icon-precomposed-57.png">
+    <link href="patternfly/css/patternfly.min.css" rel="stylesheet" media="screen, print">
+    <link href="patternfly/css/patternfly-additions.min.css" rel="stylesheet"
+          media="screen, print">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+          media="screen, print">
+    <link href="css/styles.css" rel="stylesheet" media="screen, print">
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script src="components/matchHeight/jquery.matchHeight-min.js"></script>
+    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="patternfly/js/patternfly.js"></script>
+    <script src="js/globals.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-pf" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            <img src="img/brand.svg" alt="Infinispan Server Management Console"/>
+        </a>
+    </div>
+    <div class="collapse navbar-collapse navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-utility">
+            <li>
+                <a href="#">Status</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="pficon pficon-user"></span>
+                    Brian Johnson <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="login.html">Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-primary">
+            <li>
+                <a href="cache-containers.html">Caches</a>
+            </li>
+            <li class="active">
+                <a href="clusters.html">Clusters</a>
+            </li>
+            <li>
+                <a href="deployments.html" class="active">Deployments</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="cache-containers.html">Clusters</a>
+                </li>
+                <li class="active"><strong>JDG Cluster #1</strong></li>
+            </ol>
+            <div class="actions pull-right">
+                <a href="#"><span class="pficon pficon-refresh"></span> Refresh</a>
+            </div>
+            <h1>JDG Cluster #1</h1>
+            <br>
+        </div>
+    </div>
+    
+    <div class="row" style="padding-bottom:20px">
+        <div class="col-sm-10 col-md-10">
+            <span class="fa fa-check text-success" title="RUNNING"></span> <span
+                class="text-success"><strong>RUNNING</strong></span>
+        </div>
+        <div class="col-sm-2 col-md-2">
+            <div class="dropdown pull-right">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                        data-toggle="dropdown">
+                    ACTIONS
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Stop</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Start</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Delete</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="cluster-nodes.html">Nodes</a></li>
+                <li><a href="cluster-performance.html">Performance</a></li>
+                <li><a href="cluster-configuration.html">Configuration</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-9 col-md-10 col-sm-push-3 col-md-push-2" id="cache-cards">
+            <br />
+
+            <div class="alert alert-info">
+                <span class="fa fa-filter" title="Persistent"></span> Showing 45 nodes out of 60 total.
+            </div>
+
+            <div class="col-xs-6 col-sm-4 col-md-2">
+              <div class="card-pf card-pf-accented card-pf-aggregate-status">
+                <h2 class="card-pf-title">Add Node
+                </h2>
+                <div style="height: 50px;" class="card-pf-body">
+                  <p class="card-pf-aggregate-status-notifications">
+                    <span class="card-pf-aggregate-status-notification"><a data-original-title="Add Node" href="#" class="add" data-toggle="tooltip" data-placement="top" title=""><span class="pficon pficon-add-circle-o"></span></a></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action">
+                    <h2 class="card-pf-title">
+                        <span class="pficon pficon-ok"></span><a href="cache-status.html">Node #1</a>
+                    </h2>
+
+                    <div class="card-pf-body">
+                        <p>Coordinator</p>
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="card-pf-aggregate-status-notification">
+                                192.168.192.1
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action">
+                    <h2 class="card-pf-title">
+                        <span class="pficon pficon-error-circle-o"></span><a href="cache-status.html">Node #2</a>
+                    </h2>
+
+                    <div class="card-pf-body">
+                        <p>&nbsp;</p>
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="card-pf-aggregate-status-notification">
+                                192.168.192.2
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-2">
+                <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-with-action">
+                    <h2 class="card-pf-title">
+                        <span class="pficon pficon-ok"></span><a href="cache-status.html">Node #3</a>
+                    </h2>
+
+                    <div class="card-pf-body">
+                        <p>&nbsp;</p>
+                        <p class="card-pf-aggregate-status-notifications">
+                            <span class="card-pf-aggregate-status-notification">
+                                192.168.192.3
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3 col-md-2 col-sm-pull-9 col-md-pull-10 sidebar-pf sidebar-pf-left">
+            <br>
+            <small>Quick search:</small>
+            <form role="form" class="search-pf has-button">
+                <div class="form-group has-clear">
+                    <div class="search-pf-input-group">
+                        <label for="search5" class="sr-only">Name</label>
+                        <input id="search5" class="form-control" placeholder="Type name, ..."
+                               type="search">
+                        <button style="display: none;" type="button" class="clear" aria-hidden="true"><span
+                                class="pficon pficon-close"></span></button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default" type="submit"><span class="fa fa-search"></span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
