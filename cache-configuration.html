@@ -2,7 +2,6 @@
 <!--[if IE 9]>
 <html class="ie9"><![endif]-->
 <!--[if gt IE 9]><!-->
-<>
 <!--<![endif]-->
 <head>
     <title>Infinispan Server Management Console</title>
@@ -41,11 +40,10 @@
 
     <style>
         table.ispn-aligned tr td {
-        vertical-align: middle;
+            vertical-align: middle;
         }
     </style>
 </head>
-<>
 <nav class="navbar navbar-default navbar-pf" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
@@ -111,7 +109,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-primary">
             <li class="active">
-                <a href="cache-containers-html">Caches</a>
+                <a href="cache-containers.html">Caches</a>
             </li>
             <li>
                 <a href="clusters.html">Clusters</a>
@@ -169,7 +167,7 @@
 
     <div class="row">
         <div class="col-sm-12 col-md-12">
-            <ul class="nav nav-tabs nav-tabs-pf">
+            <ul class="nav nav-tabs nav-tabs">
                 <li><a href="cache-status.html">General status</a></li>
                 <li class="active"><a href="cache-configuration.html">Configuration</a></li>
                 <li><a href="#">Nodes</a></li>
@@ -177,103 +175,205 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-8 col-md-9">
+
+    <div class="row" style="padding-top: 20px">
+        <form class="form-horizontal">
+            <div class="col-md-2">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active" role="presentation"><a href="#">General</a></li>
+                    <li role="presentation"><a href="#">Locking</a></li>
+                    <li role="presentation"><a href="#">Eviction</a></li>
+                    <li role="presentation"><a href="#">Expiration</a></li>
+                    <li role="presentation"><a href="#">Compatibility</a></li>
+                    <li role="presentation"><a href="#">Transactions</a></li>
+                    <li role="presentation"><a href="#">State transfer</a></li>
+                    <li role="presentation"><a href="#">Loader</a></li>
+                    <li role="presentation"><a href="#">File store</a></li>
+                    <li role="presentation"><a href="#">Remote store</a></li>
+                    <li role="presentation"><a href="#">JDBC store</a></li>
+                    <li role="presentation"><a href="#">LevelDB store</a></li>
+                    <li role="presentation"><a href="#">Backup</a></li>
+                    <li role="presentation"><a href="#">Security</a></li>
+                </ul>
+            </div>
+            <div class="col-md-10">
 
 
-        </div>
+                <div class="alert alert-success">
+                    <span class="fa fa-filter" title="Persistent"></span> Cache properties saved.
+                </div>
 
-        <div class="col-sm-3 col-md-2 col-sm-pull-9 col-md-pull-10 sidebar-pf sidebar-pf-left">
-            <br>
-            <small>Quick search:</small>
-            <form role="form" class="search-pf has-button">
-                <div class="form-group has-clear">
-                    <div class="search-pf-input-group">
-                        <label for="search5" class="sr-only">Name</label>
-                        <input id="search5" class="form-control" placeholder="Type name, data center, ..."
-                               type="search">
-                        <button style="display: none;" type="button" class="clear" aria-hidden="true"><span
-                                class="pficon pficon-close"></span></button>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Name</label>
+                        <div class="col-md-6" >
+                            <input type="text" class="form-control" name="cacheName" ng-model="data.name" ng-disabled="readOnly" required="" disabled="disabled">
+                        </div>
+                        <div class="col-md-1 pull-left" style="padding-left: 0">
+                            <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                        </div>
+                        <!-- ngIf: form.cacheName.$invalid && !form.cacheName.$pristine -->
                     </div>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-default" type="submit"><span class="fa fa-search"></span></button>
-                </div>
-            </form>
-            <hr>
-            <div class="panel-group" id="filter-accordion">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#filter-type-accordion" href="#filter-type-accordion" class="collapsed">
-                                Type
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="filter-type-accordion" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <fieldset>
-                                <label><input type="checkbox" name="cache-type" value="local" checked/> Local</label>
-                                <label><input type="checkbox" name="cache-type" value="replicated" checked/> Replicated</label>
-                                <label><input type="checkbox" name="cache-type" value="distributed" checked/>
-                                    Distributed</label>
-                                <label><input type="checkbox" name="cache-type"
-                                              value="invalidation" checked/> Invalidation</label>
-                            </fieldset>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Type</label>
+
+                        <div class="col-md-6">
+                            <select ng-model="data.type" ng-options="ct as ct for ct in cacheTypes" ng-disabled="readOnly" class="form-control"  disabled="disabled"><option value="string:distributed-cache" label="distributed-cache" selected="selected">distributed-cache</option><option value="string:local-cache" label="local-cache">local-cache</option><option value="string:replicated-cache" label="replicated-cache">replicated-cache</option><option value="string:invalidation-cache" label="invalidation-cache">invalidation-cache</option></select>
+                        </div>
+                        <div class="col-md-1 pull-left" style="padding-left: 0">
+                            <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
                         </div>
                     </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#filter-trait-accordion" href="#filter-trait-accordion"
-                               class="collapsed">
-                                Trait
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="filter-trait-accordion" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <fieldset>
-                                <label><input type="checkbox" name="cache-trait" value="bounded" checked/> Bounded <span class="fa fa-stack-overflow" title="Bounded"></span></label>
-                                <label><input type="checkbox" name="cache-trait" value="compatible" checked/> Compatible <span class="fa fa-puzzle-piece" title="Compatible"></span></label>
-                                <label><input type="checkbox" name="cache-trait" value="indexed" checked/> Indexed <span class="fa fa-list-ol" title="Indexed"></span></label>
-                                <label><input type="checkbox" name="cache-trait" value="persistent" checked/> Persistent <span class="fa fa-database" title="Persistent"></span></label>
-                                <label><input type="checkbox" name="cache-trait" value="remotebackup" checked/> Remote
-                                    backup <span class="pficon pficon-history" title="Remote backup"></span></label>
-                                <label><input type="checkbox" name="cache-trait" value="secure" checked/> Secure <span class="fa fa-lock" title="Indexed"></span></label>
-                                <label><input type="checkbox" name="cache-trait"
-                                              value="transactional" checked/> Transactional <span class="fa fa-arrow-circle-o-down" title="Transactional"></span></label>
-                            </fieldset>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Configuration template</label>
+
+                        <div class="col-md-6">
+                            <input type="text" ng-model="data.template" ng-disabled="readOnly" class="form-control"  disabled="disabled">
+                        </div>
+                        <div class="col-md-1 pull-left" style="padding-left: 0">
+                            <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
                         </div>
                     </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#filter-status-accordion" href="#filter-status-accordion"
-                               class="collapsed">
-                                Status
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="filter-status-accordion" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <fieldset>
-                                <label><input type="checkbox" name="cache-status" value="indexing" checked/> Indexing</label>
-                                <label><input type="checkbox" name="cache-status"
-                                              value="maintenance" checked/> Offline</label>
-                                <label><input type="checkbox" name="cache-status"
-                                              value="rebalancing" checked/> Rebalancing</label>
-                                <label><input type="checkbox" name="cache-status" value="splitbrain" checked/> Split</label>
-                            </fieldset>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Mode</label>
+
+                        <div class="col-md-6">
+                            <select ng-model="data.configuration.mode" ng-options="item as item for item in metadata.mode.allowed" ng-disabled="readOnly" class="form-control"  disabled="disabled"><option value="string:SYNC" label="SYNC" selected="selected">SYNC</option><option value="string:ASYNC" label="ASYNC">ASYNC</option></select>
+                        </div>
+                        <div class="col-md-1 pull-left" style="padding-left: 0">
+                            <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Auto config</label>
+
+                        <div class="col-md-6">
+                            <input type="checkbox"  style="margin-top: 8px">
+                        </div>
+                        <div class="col-md-1 pull-left" style="padding-left: 0">
+                            <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Batching</label>
+
+                        <div class="col-md-6">
+                            <input type="checkbox"  style="margin-top: 8px">
+                        </div>
+                        <div class="col-md-1 pull-left" style="padding-left: 0">
+                            <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Capacity factor</label>
+
+                        <div class="col-md-6">
+                            <input type="text" ng-model="data.configuration['capacity-factor']" ng-disabled="readOnly" class="form-control"  disabled="disabled">
+                        </div>
+                        <div class="col-md-1 pull-left" style="padding-left: 0">
+                            <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">JNDI name</label>
+
+                        <div class="col-md-6">
+                            <input type="text" ng-model="data.configuration['jndi-name']" ng-disabled="readOnly" class="form-control"  disabled="disabled">
+                        </div>
+                        <div class="col-md-1 pull-left" style="padding-left: 0">
+                            <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error': !form.lifespan.$pristine &amp;&amp; form.lifespan.$invalid }">
+                        <label class="col-md-2 control-label">L1 lifespan</label>
+                        <div class="col-md-6">
+                            <input type="text" name="lifespan" ng-model="data.configuration['l1-lifespan']" ng-disabled="readOnly" positive-integer="" class="ng-pristine ng-untouched ng-invalid ng-invalid-positive-integer" disabled="disabled">
+                        </div>
+                        <div class="col-md-1 pull-left" style="padding-left: 0">
+                            <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                        </div>
+                        <!-- ngIf: !form.lifespan.$pristine && form.lifespan.$invalid -->
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Module</label>
+
+                        <div class="col-md-6">
+                            <input type="text" ng-model="data.configuration.module" ng-disabled="readOnly" class="form-control"  disabled="disabled">
+                        </div>
+                        <div class="col-md-1 pull-left" style="padding-left: 0">
+                            <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error': !form.owners.$pristine &amp;&amp; form.owners.$invalid }">
+                        <label class="col-md-2 control-label">Owners</label>
+
+                        <div class="col-md-6">
+                            <input type="text" name="owners" ng-model="data.configuration.owners" ng-disabled="readOnly" positive-integer="" class="ng-pristine ng-untouched ng-invalid ng-invalid-positive-integer" disabled="disabled">
+                        </div>
+                        <div class="col-md-1 pull-left" style="padding-left: 0">
+                            <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                        </div>
+                        <!-- ngIf: !form.owners.$pristine && form.owners.$invalid -->
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error': !form.segments.$pristine &amp;&amp; form.segments.$invalid }">
+                        <label class="col-md-2 control-label">Segments</label>
+
+                        <div class="col-md-6">
+                            <input type="text" name="segments" ng-model="data.configuration.segments" ng-disabled="readOnly" positive-integer="" class="ng-pristine ng-untouched ng-invalid ng-invalid-positive-integer" disabled="disabled">
+                        </div>
+                        <div class="col-md-1 pull-left" style="padding-left: 0">
+                            <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                        </div>
+                        <!-- ngIf: !form.segments.$pristine && form.segments.$invalid -->
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Start</label>
+
+                        <div class="col-md-6">
+                            <select ng-model="data.configuration.start" ng-options="item as item for item in metadata.start.allowed" ng-disabled="readOnly" class="form-control"  disabled="disabled"><option value="string:EAGER" label="EAGER" selected="selected">EAGER</option><option value="string:LAZY" label="LAZY">LAZY</option></select>
+                        </div>
+                        <div class="col-md-1 pull-left" style="padding-left: 0">
+                            <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Statistics</label>
+
+                        <div class="col-md-6">
+                            <input type="checkbox"  style="margin-top: 8px">
+                        </div>
+                        <div class="col-md-1 pull-left" style="padding-left: 0">
+                            <i class="fa fa-info-circle ng-scope" tooltip="The cache name" tooltip-trigger="" tooltip-animation="true" tooltip-placement="top"></i>
+                        </div>
+                    </div>
+
+
+                <br>
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-2">
+                    <button type="button" class="btn btn-primary">Apply changes</button>
+                    <button type="button" class="btn btn-default">Cancel</button>
                 </div>
             </div>
-        </div>
 
+                </div>
+
+        </form>
+
+
+
+      </div>
     </div>
+
 
 </div>
 
