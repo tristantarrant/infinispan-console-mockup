@@ -49,3 +49,7 @@ table.ispn-aligned tr td {
 .card-pf-body table {
     margin-bottom: 0.5em;
 }
+
+.header-row {
+    margin-bottom: 20px;
+}
