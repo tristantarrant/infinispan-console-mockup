@@ -114,40 +114,18 @@
             <li>
                 <a href="clusters.html">Clusters</a>
             </li>
-            <li>
-                <a href="deployments.html" class="active">Deployments</a>
-            </li>
         </ul>
     </div>
 </nav>
 <div class="container-fluid">
-    <div class="row">
+    <div class="row header-row">
         <div class="col-sm-12 col-md-12">
             <ol class="breadcrumb">
                 <li>
                     <a href="cache-containers.html">Cache containers</a>
                 </li>
-                <li>
-                    <a href="cache-container-caches.html">My cache container 1</a>
-                </li>
-                <li class="active"><strong>My cache</strong></li>
+                <li class="active"><strong>My cache container 1</strong></li>
             </ol>
-            <h1>Cache details: 'My cache 1'</h1>
-        </div>
-    </div>
-    <div class="row" style="padding-bottom:20px">
-        <div class="col-sm-10 col-md-10">
-            <span class="fa fa-ban text-danger" title="STOPPED"></span> <span
-                class="text-danger"><strong>STOPPED</strong></span>
-            <span class="small"> |</span>
-            <span class="spinner spinner-xs spinner-inline" title="Cache is under some temporary condition"></span>
-            <span class="text-success"><strong>REBALANCING</strong></span>
-            |
-            <span class="text-success"><strong>INDEXING</strong></span>
-            |
-            <span class="text-danger"><strong>SPLIT</strong></span>
-        </div>
-        <div class="col-sm-2 col-md-2">
             <div class="dropdown pull-right">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                         data-toggle="dropdown">
@@ -155,6 +133,7 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Refresh</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Stop</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Start</a></li>
                     <li role="presentation" class="divider"></li>
@@ -162,6 +141,7 @@
                     </li>
                 </ul>
             </div>
+            <h1>My cache container 1 <span class="label label-success">Available</span> | <span class="text-success"><span class="spinner spinner-xs spinner-inline" title="Cache is under some temporary condition"></span> Rebalancing</span>| <span class="text-success"><span class="spinner spinner-xs spinner-inline" title="Cache is under some temporary condition"></span> Indexing</span></h1>
         </div>
     </div>
 

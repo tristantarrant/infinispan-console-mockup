@@ -22,6 +22,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="patternfly/img/apple-touch-icon-precomposed-114.png">
     <!-- iPhone non-retina icon (iOS < 7) -->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="patternfly/img/apple-touch-icon-precomposed-57.png">
+    <link href="components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" media="screen,print">
     <link href="patternfly/css/patternfly.min.css" rel="stylesheet" media="screen, print">
     <link href="patternfly/css/patternfly-additions.min.css" rel="stylesheet" media="screen, print">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen, print">
@@ -29,6 +30,7 @@
     <script src="components/jquery/dist/jquery.js"></script>
     <script src="components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
     <script src="patternfly/js/patternfly.js"></script>
     <script src="js/globals.js"></script>
 </head>
@@ -69,14 +71,11 @@
                 <li>
                     <a href="clusters.html">Clusters</a>
                 </li>
-                <li>
-                    <a href="deployments.html" class="active">Deployments</a>
-                </li>
             </ul>
         </div>
     </nav>
     <div class="container-fluid">
-        <div class="row">
+        <div class="row header-row">
             <div class="col-sm-12 col-md-12">
                 <ol class="breadcrumb">
                     <li>
@@ -84,11 +83,22 @@
                     </li>
                     <li class="active"><strong>My cache container 1</strong></li>
                 </ol>
-                <div class="actions pull-right">
-                    <a href="#"><span class="pficon pficon-refresh"></span> Refresh</a>
+                <div class="dropdown pull-right">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                            data-toggle="dropdown">
+                        ACTIONS
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Refresh</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Stop</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Start</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Delete</a>
+                        </li>
+                    </ul>
                 </div>
-                <h1>Cache container 'My cache container 1'</h1>
-                <br>
+                <h1>My cache container 1 <span class="label label-success">Available</span></h1>
             </div>
         </div>
 
@@ -105,6 +115,7 @@
                     <li><a href="cache-container-configuration.html">Transport</a></li>
                     <li class="active"><a href="cache-container-configuration-threadpools.html">Thread pools</a></li>
                     <li><a href="cache-container-configuration-security.html">Security</a></li>
+                    <li><a href="cache-container-configuration-templates.html">Templates</a></li>
                 </ul>
                 <br />
                 <form class="form-horizontal">
